@@ -6,6 +6,7 @@ local options = {
     sql = { "sql_formatter" },
     c = { "clang-format" },
     cpp = { "clang-format" },
+    nix = { "nixpkgs-fmt" }
   },
 
   format_on_save = {
