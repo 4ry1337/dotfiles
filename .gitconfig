@@ -1,0 +1,15 @@
+[credential "https://github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	email = yskak.rakhat@gmail.com
+	name = Rakhat Yskak
+[ghq]
+	root = "~/Documents/Dev"
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
