@@ -4,8 +4,8 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     cmd = "Telescope",
     init = function()
-      local builtin = require('telescope.builtin')
-      local wk = require('which-key')
+      local builtin = require "telescope.builtin"
+      local wk = require "which-key"
       -- wk.register({
       --   ['ff'] = { builtin.find_files, "Find File" },
       --   ['fb'] = { builtin.buffers, "Find Buffer" },
@@ -13,15 +13,19 @@ return {
       --   ['fh'] = { builtin.help_tags, "Find Help" },
       --   ['fn'] = { ":Telescope file_browser path=%:p:h select_buffer=true<CR>", "File Browser" },
       -- }, { prefix = "<leader>" })
-      wk.add({
+      wk.add {
         {
           { "<leader>fb", builtin.find_files, desc = "Find Buffer" },
           { "<leader>ff", builtin.buffers, desc = "Find File" },
           { "<leader>fg", builtin.live_grep, desc = "Find with Grep" },
           { "<leader>fh", builtin.help_tags, desc = "Find Help" },
-          { "<leader>fn", ":Telescope file_browser path=%:p:help |select_buffer=true<CR>|", desc = "File Browser" },
-        }
-      })
+          {
+            "<leader>fn",
+            ":Telescope file_browser path=%:p:help |select_buffer=true<CR>|",
+            desc = "File Browser",
+          },
+        },
+      }
     end,
     opts = function()
       return {
@@ -37,9 +41,9 @@ return {
             "--smart-case",
           },
           previewer = true,
-          file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
-          grep_previewer = require 'telescope.previewers'.vim_buffer_vimgrep.new,
-          qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
+          file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+          grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+          qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
         },
         extensions = {
           file_browser = {
@@ -64,6 +68,6 @@ return {
   },
   {
     "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
   },
 }

@@ -1,4 +1,5 @@
 export EDITOR=nvim
+export ANDROID_HOME=${XDG_DATA_HOME:-${HOME}}/Android/Sdk
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -57,3 +58,5 @@ alias '..'='cd ..'
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zen.toml)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
+
+source /usr/share/nvm/init-nvm.sh
