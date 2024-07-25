@@ -52,6 +52,7 @@ alias ll='eza -l -g --icons'
 alias lla='ll -a'
 alias vim='nvim'
 alias c='clear'
+alias '..'='cd ..'
 
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zen.toml)"
 eval "$(zoxide init --cmd cd zsh)"

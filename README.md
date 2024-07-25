@@ -94,4 +94,4 @@ git\
 gh\
 ghq\
 lazygit\
-\
+
