@@ -58,8 +58,8 @@ shape = "Block"
 [env]
 TERM = "xterm-256color"
 
-[font]
-size = 16
+# [font]
+# size = 16
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
