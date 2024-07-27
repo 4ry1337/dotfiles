@@ -17,6 +17,9 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = "menuone,noselect"
 vim.o.termguicolors = true
 
+
+vim.o.conceallevel = 2
+
 -- Tabs vs spaces
 vim.o.tabstop = 2 -- A TAB character looks like 4 spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
