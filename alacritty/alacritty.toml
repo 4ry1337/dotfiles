@@ -3,62 +3,28 @@ import = [
 ]
 live_config_reload = true
 
-[bell]
-animation = "EaseOutExpo"
-duration = 0
-
-[colors]
-draw_bold_text_with_bright_colors = true
-
-# [[colors.indexed_colors]]
-# color = "0xF8BD96"
-# index = 16
-#
-# [[colors.indexed_colors]]
-# color = "0xF5E0DC"
-# index = 17
-#
-# [colors.bright]
-# black = "0x988BA2"
-# blue = "0x96CDFB"
-# cyan = "0x89DCEB"
-# green = "0xABE9B3"
-# magenta = "0xF5C2E7"
-# red = "0xF28FAD"
-# white = "0xD9E0EE"
-# yellow = "0xFAE3B0"
-#
-# [colors.cursor]
-# cursor = "0xF5E0DC"
-# text = "0x1E1D2F"
-#
-# [colors.normal]
-# black = "0x6E6C7E"
-# blue = "0x96CDFB"
-# cyan = "0x89DCEB"
-# green = "0xABE9B3"
-# magenta = "0xF5C2E7"
-# red = "0xF28FAD"
-# white = "0xD9E0EE"
-# yellow = "0xFAE3B0"
-#
-# [colors.primary]
-# background = "0x1E1D2F"
-# foreground = "0xD9E0EE"
-
-[cursor]
-blink_interval = 500
-blink_timeout = 5
-unfocused_hollow = false
-
-[cursor.style]
-blinking = "Off"
-shape = "Block"
+[shell]
+program = "/bin/zsh"
 
 [env]
 TERM = "xterm-256color"
 
-# [font]
+[window]
+decorations = "full"
+dynamic_title = true
+option_as_alt = "Both"
+opacity = 0.95
+blur = true
+
+[window.dimensions]
+columns = 160
+lines = 80
+
+[window.padding]
+x = 4
+y = 4
+
+[font]
 # size = 16
 
 [font.bold]
@@ -80,29 +46,34 @@ style = "Regular"
 x = 0
 y = 0
 
-[mouse]
-hide_when_typing = true
+[colors]
+draw_bold_text_with_bright_colors = true
 
-[[mouse.bindings]]
-action = "PasteSelection"
-mouse = "Middle"
+[bell]
+animation = "EaseOutExpo"
+duration = 0
 
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[shell]
-program = "/bin/zsh"
+[cursor]
+blink_interval = 500
+blink_timeout = 5
+unfocused_hollow = false
 
-[window]
-decorations = "full"
-dynamic_title = true
-option_as_alt = "Both"
-# startup_mode = "Maximized"
+[cursor.style]
+blinking = "Off"
+shape = "Block"
 
-[window.dimensions]
-columns = 160
-lines = 80
+[mouse]
+hide_when_typing = true
+bindings = [
+  { mouse = "Middle", action = "PasteSelection" }
+]
 
-[window.padding]
-x = 4
-y = 4
+[keyboard]
+bindings = [
+  { key = "+", mods = "Control", action = "IncreaseFontSize" },
+  { key = "-", mods = "Control", action = "DecreaseFontSize" },
+  # { key = "=", mods = "Control", action = "ResetFontSize" },
+]
