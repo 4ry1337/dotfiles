@@ -18,7 +18,6 @@ map(
   { desc = "Start or continue the debugger" }
 )
 
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
--- map("n", "<leader>rcu", function()
---   require('crates').upgrade_all_crates()
--- end, { desc = "update crates" })
+-- let j and k move up and down lines that have been wrapped
+map("n", "j", "gj")
+map("n", "k", "gk")
