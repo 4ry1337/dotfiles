@@ -2,6 +2,16 @@ return {
   ensure_installed = {
     "lua",
     "rust",
+    "bash",
+    "markdown",
+    "markdown_inline",
+    "sql",
+    "html",
+    "css",
+    "javascript",
+    "yaml",
+    "json",
+    "toml",
   },
   highlight = {
     enable = true,

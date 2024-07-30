@@ -8,7 +8,7 @@ return {
       "windwp/nvim-ts-autotag",
     },
     opts = function()
-      return require "nvchad.configs.treesitter"
+      return require "configs.treesitter"
     end,
   },
 }
