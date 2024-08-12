@@ -9,8 +9,17 @@ capabilities = vim.tbl_deep_extend(
   capabilities,
   require("cmp_nvim_lsp").default_capabilities()
 )
-local servers =
-  { "clangd", "html", "cssls", "sqlls", "dockerls", "tailwindcss", "eslint" }
+local servers = {
+  "clangd",
+  "html",
+  "cssls",
+  "sqlls",
+  "jdtls",
+  "dockerls",
+  "tailwindcss",
+  "eslint",
+}
+
 -- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

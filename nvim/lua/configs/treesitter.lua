@@ -12,6 +12,7 @@ return {
     "yaml",
     "json",
     "toml",
+    "java",
   },
   highlight = {
     enable = true,

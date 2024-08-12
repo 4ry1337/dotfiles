@@ -13,5 +13,6 @@ return {
     "clangd",
     "clang-format",
     "codelldb",
+    "java-language-server",
   },
 }
