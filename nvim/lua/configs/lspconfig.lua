@@ -14,7 +14,6 @@ local servers = {
   "html",
   "cssls",
   "sqlls",
-  "jdtls",
   "dockerls",
   "tailwindcss",
   "eslint",
@@ -38,6 +37,23 @@ lspconfig.tsserver.setup {
 
 --rust
 lspconfig.rust_analyzer.setup {}
+
+--java
+lspconfig.jdtls.setup {
+  settings = {
+    java = {
+      configuration = {
+        runtimes = {
+          {
+            name = "JavaSE-21",
+            path = "/opt/jdk-21",
+            default = true,
+          },
+        },
+      },
+    },
+  },
+}
 
 --tailwindcss
 lspconfig.tailwindcss.setup {

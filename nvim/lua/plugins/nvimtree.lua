@@ -1,6 +1,9 @@
 return {
   "nvim-tree/nvim-tree.lua",
   opts = function()
-    return require "nvchad.configs.nvimtree"
+    local nv = require "nvchad.configs.nvimtree"
+    nv.filters.git_ignored = false
+    nv.filters.dotfiles = false
+    return nv
   end,
 }

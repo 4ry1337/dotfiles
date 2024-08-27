@@ -1,5 +1,8 @@
 return {
   {
+    "mfussenegger/nvim-dap",
+  },
+  {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
@@ -30,8 +33,5 @@ return {
     opts = {
       handlers = {},
     },
-  },
-  {
-    "mfussenegger/nvim-dap",
   },
 }
