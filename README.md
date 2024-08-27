@@ -40,6 +40,10 @@ discord\
 docker\
 docker desktop\
 obsidian\
+okular\
+jupyter\
+libreoffice\
+obs-studio\
 
 ## IDE
 
@@ -95,3 +99,5 @@ gh\
 ghq\
 lazygit\
 
+# Fstab
+/mnt/windows	ntfs-3g     	rw,uid=1000,gid=1000,windows_names	0 0
