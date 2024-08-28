@@ -5,99 +5,109 @@
 default arch with gnome desktop and gdm
 
 ```
-OS: Arch Linux x86_64
-Kernel: Linux 6.10.0-arch1-2
-Shell: zsh 5.9
-DE: GNOME 46.3.1
-WM: Mutter (Wayland)
-WM Theme: Adwaita
-Theme: Adwaita [GTK2/3/4]
-Icons: Adwaita [GTK2/3/4]
-Font: Cantarell (11pt) [GTK2/3/4]
-Cursor: Adwaita (24px)
-Terminal: alacritty 0.13.2
-Terminal Font: JetBrainsMono Nerd Font (16pt)
-Grub-theme: Sleek-Dark
+                  -`                     rakhat@rakhat
+                 .o+`                    -------------
+                `ooo/                    OS: Arch Linux x86_64
+               `+oooo:                   Host: 82K2 (IdeaPad Gaming 3 15ACH6)
+              `+oooooo:                  Kernel: Linux 6.10.6-arch1-1
+              -+oooooo+:                 Packages: 966 (pacman)
+            `/:-:++oooo+:                Shell: zsh 5.9
+           `/++++/+++++++:               Display (AUOD1ED): 1920x1080 @ 120 Hz (as 1536x864) in 15″ [Built-in] *
+          `/++++++++++++++:              Display (Samsung Electric Company 27"): 2560x1440 @ 144 Hz in 27″ [External]
+         `/+++ooooooooooooo/`            DE: GNOME 46.4
+        ./ooosssso++osssssso+`           WM: Mutter (Wayland)
+       .oossssso-````/ossssss+`          WM Theme: Adwaita
+      -osssssso.      :ssssssso.         Theme: Adwaita [GTK2/3/4]
+     :osssssss/        osssso+++.        Icons: Adwaita [GTK2/3/4]
+    /ossssssss/        +ssssooo/-        Font: Cantarell (11pt) [GTK2/3/4]
+  `/ossssso+/:-        -:/+osssso+-      Cursor: Adwaita (24px)
+ `+sso+:-`                 `.-/+oso:     Terminal: alacritty 0.13.2
+`++:.                           `-/+/    Terminal Font: JetBrainsMono Nerd Font (11pt)
+.`                                 `/    CPU: AMD Ryzen 7 5800H (16) @ 4.46 GHz
+                                         GPU 1: NVIDIA GeForce RTX 3060 Mobile / Max-Q [Discrete]
+                                         GPU 2: AMD Radeon Vega Series / Radeon Vega Mobile Series [Integrated]
+                                         Memory: 27.26 GiB
+                                         Swap: 4.00 GiB
+                                         Disk linux: 227.18 GiB - ext4
+                                         Disk windows: 953.00 GiB - ntfs
 ```
 
 # TODO
 
-[ ] start using stow for symblinks
-[ ] declrative packages
+[x] start using stow for symblinks
+[ ] add arch install config
+[ ] install.sh script 
+
+# Fstab
+
+/dev/nvme0n1p3     	/mnt/windows	ntfs-3g     	rw,uid=1000,gid=1000,windows_names	0 0
 
 # Packages
 
-(aur) = *
+
+yay installation:
+```
+cd ~
+pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+
+pacman packages installation:
+```
+
+sudo pacman -S alacritty telegram-dekstop docker obsidian okular libreoffice-still obs-studio git github-cli ghq lazygit neovim tmux mtr iperf3 ldns aria2 socat nmap ipcalc strace ltrace lsof lshw zsh zoxide eza fd jq nvidia-utils nvidia-settings zip unzip ntfs-3g fzf tree stow which wl-clipboard xclip ripgrep xorg-xwayland xwaylandvideobridge fastfetch
+```
+
+yay packages installation:
+```
+yay -S spotify google-chrome whatsapp-for-linux armcord oh-my-posh zinit envycontrol
+```
+
+setup gpu
+```
+sudo envycontrol -s hybrid --dm gdm --rtd3
+```
 
 ## Apps
 
-neovim\
-spotify*\
-google-chrome*\
-whatsapp-for-linux*\
-telegram-dekstop\
-discord\
-docker\
+```
+yay -S spotify google-chrome whatsapp-for-linux armcord
+```
+```
+sudo pacman -S alacritty telegram-dekstop docker obsidian okular libreoffice-still obs-studio
+```
 docker desktop\
-obsidian\
-okular\
-jupyter\
-libreoffice\
-obs-studio\
+
+### Git
+```
+sudo pacman -S git github-cli ghq lazygit
+```
 
 ## IDE
 
-nvchad\
-tmux\
-zsh\
-zoxide\
-ohmyposh\
-zinit\
-eza\
-fd\
-jq\
-oh-my-posh\
+```
+sudo pacman -S neovim tmux
+```
 
-## Networking
+## Network Monitoring
 
-mtr # A network diagnostic tool\
-iperf3\
-bend  # `dig` + `nslookup`\
-ldns # replacement of `dig`, it provide the command `drill`\
-aria2 # A lightweight multi-protocol & multi-source command-line download utility\
-socat # replacement of openbsd-netcat\
-nmap # A utility for network discovery and security auditing\
-ipcalc  # it is a calculator for the IPv4/v6 addresses\
+```
+sudo pacman -S mtr iperf3 ldns aria2 socat nmap ipcalc 
+```
 
-## system call monitoring
+## System Monitoring
 
-strace # system call monitoring\
-ltrace # library call monitoring\
-lsof # list open files\
-lshw\
+```
+sudo pacman -S strace ltrace lsof lshw
+```
 
 ## Utils
 
-fastfetch\
-ntfs3g\
-zip\
-unzip\
-fzf\
-tree\
-ripgrep\
-stow\
-which\
-wl-clipboard\
-xclip\
-xorg-xwayland\
-xwaylandvideobridge\
+```
+sudo pacman -S zsh zoxide eza fd jq nvidia-utils nvidia-settings zip unzip ntfs-3g fzf tree stow which wl-clipboard xclip ripgrep xorg-xwayland xwaylandvideobridge fastfetch
 
-## Git
+yay -S oh-my-posh zinit envycontrol
+```
 
-git\
-gh\
-ghq\
-lazygit\
-
-# Fstab
-/mnt/windows	ntfs-3g     	rw,uid=1000,gid=1000,windows_names	0 0
