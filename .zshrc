@@ -1,6 +1,5 @@
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 export EDITOR=nvim
-export ANDROID_HOME=${XDG_DATA_HOME:-${HOME}}/Android/Sdk
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -77,4 +76,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

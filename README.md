@@ -44,7 +44,6 @@ default arch with gnome desktop and gdm
 
 # Packages
 
-
 yay installation:
 ```
 cd ~
@@ -63,6 +62,13 @@ sudo pacman -S alacritty telegram-dekstop docker obsidian okular libreoffice-sti
 yay packages installation:
 ```
 yay -S spotify google-chrome whatsapp-for-linux armcord oh-my-posh zinit envycontrol
+```
+
+removing unnecessary gnome packages
+```
+sudo pacman -Rns epiphany yelp gnome-tour gnome-connection
+gnome-software htop gnome-console gnome-maps
+gnome-text-editor gnome-user-docs 
 ```
 
 setup gpu
