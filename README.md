@@ -34,9 +34,9 @@ default arch with gnome desktop and gdm
 
 # TODO
 
-[x] start using stow for symblinks
-[ ] add arch install config
-[ ] install.sh script 
+- [x] start using stow for symblinks
+- [ ] add arch install config
+- [ ] install.sh script 
 
 # Fstab
 
