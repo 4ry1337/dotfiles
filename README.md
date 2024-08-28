@@ -107,7 +107,9 @@ sudo pacman -S strace ltrace lsof lshw
 
 ```
 sudo pacman -S zsh zoxide eza fd jq nvidia-utils nvidia-settings zip unzip ntfs-3g fzf tree stow which wl-clipboard xclip ripgrep xorg-xwayland xwaylandvideobridge fastfetch
+```
 
+```
 yay -S oh-my-posh zinit envycontrol
 ```
 
