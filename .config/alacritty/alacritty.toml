@@ -28,7 +28,7 @@ y = 4
 # size = 16
 
 [font.bold]
-family = "JetBrainsMono Nerd Font"
+family = "iA Writer Mono S"
 style = "Bold"
 
 [font.glyph_offset]
@@ -36,10 +36,10 @@ x = 0
 y = 0
 
 [font.italic]
-family = "JetBrainsMono Nerd Font"
+family = "iA Writer Mono S"
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "iA Writer Mono S"
 style = "Regular"
 
 [font.offset]
