@@ -13,7 +13,7 @@ TERM = "xterm-256color"
 decorations = "full"
 dynamic_title = true
 option_as_alt = "Both"
-opacity = 0.95
+opacity = 0.7
 blur = true
 
 [window.dimensions]
@@ -25,7 +25,7 @@ x = 4
 y = 4
 
 [font]
-# size = 16
+size = 14
 
 [font.bold]
 family = "iA Writer Mono S"
@@ -39,6 +39,7 @@ y = 0
 family = "iA Writer Mono S"
 
 [font.normal]
+# family = "JetBrainsMono Nerd Font"
 family = "iA Writer Mono S"
 style = "Regular"
 
