@@ -13,8 +13,6 @@ return {
     "clangd",
     "clang-format",
     "codelldb",
-    "jdtls",
-    "java-debug-adapter",
   },
   max_concurrent_installers = 10,
 }
