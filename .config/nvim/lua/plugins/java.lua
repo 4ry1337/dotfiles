@@ -28,10 +28,4 @@ return {
       require("jdtls").start_or_attach(config)
     end,
   },
-  -- {
-  --   "nvim-java/nvim-java",
-  --   config = function()
-  --     require("java").setup {}
-  --   end,
-  -- },
 }

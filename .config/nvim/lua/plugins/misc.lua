@@ -18,4 +18,8 @@ return {
     lazy = true,
   },
   { "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
+  {
+    "windwp/nvim-autopairs",
+    enabled = false,
+  },
 }
