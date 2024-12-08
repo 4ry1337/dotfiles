@@ -5,12 +5,11 @@
 default arch with gnome desktop and gdm
 
 ```
-                  -`                     rakhat@rakhat
+-`                     rakhat@rakhat
                  .o+`                    -------------
                 `ooo/                    OS: Arch Linux x86_64
                `+oooo:                   Host: 82K2 (IdeaPad Gaming 3 15ACH6)
-              `+oooooo:                  Kernel: Linux 6.10.6-arch1-1
-              -+oooooo+:                 Packages: 966 (pacman)
+              `+oooooo:                  Kernel: Linux 6.10.6-arch1-1 -+oooooo+:                 Packages: 966 (pacman)
             `/:-:++oooo+:                Shell: zsh 5.9
            `/++++/+++++++:               Display (AUOD1ED): 1920x1080 @ 120 Hz (as 1536x864) in 15″ [Built-in] *
           `/++++++++++++++:              Display (Samsung Electric Company 27"): 2560x1440 @ 144 Hz in 27″ [External]
@@ -119,3 +118,17 @@ sudo pacman -S zsh zoxide eza fd jq nvidia-utils nvidia-settings zip unzip ntfs-
 yay -S oh-my-posh zinit envycontrol
 ```
 
+
+# Clean up Arch commands
+## Cache
+```bash
+sudo pacman -Scc
+```
+## Children
+```bash
+sudo pacman -Qtdq | sudo pacman -Rns -
+```
+## Cyclic dependencies
+```bash
+sudo pacman -Qqd | sudo pacman -Rsu -
+```
