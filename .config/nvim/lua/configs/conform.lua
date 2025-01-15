@@ -8,6 +8,7 @@ local options = {
     sql = { "sql_formatter" },
     c = { "clang-format" },
     cpp = { "clang-format" },
+    toml = { "taplo" },
   },
 
   format_on_save = {
