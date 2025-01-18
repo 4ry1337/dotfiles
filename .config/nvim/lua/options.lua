@@ -1,42 +1,56 @@
-require "nvchad.options"
+local opt = vim.opt
+local o = vim.o
+local g = vim.g
 
--- Numbers
-vim.o.number = true
-vim.o.relativenumber = true
+g.have_nerd_font = true
+g.mapleader = " "
+g.maplocalleader = "\\"
 
--- Timings
-vim.o.updatetime = 250
--- vim.o.timeout = true
-vim.o.timeoutlen = 300
--- vim.o.ttimeoutlen = 10
-
--- Display
-vim.o.conceallevel = 2
-
--- Clipboard
-vim.o.clipboard = "unnamedplus"
-
+opt.laststatus = 3
+opt.mouse = "a"
+opt.number = true
+opt.numberwidth = 2
+opt.relativenumber = true
+vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor.
 -- Wrap
-vim.o.textwidth = 60
-vim.o.linebreak = true
-vim.o.breakindent = true
-
+o.wrap = false
+-- o.textwidth = 60
+-- o.linebreak = true
+-- o.breakindent = true
 -- Indenting
-vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
-vim.o.shiftwidth = 2 -- Number of spaces inserted when indenting
-vim.o.smartindent = true
-vim.o.tabstop = 2 -- A TAB character looks like 4 spaces
-vim.o.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
-
+opt.tabstop = 2 -- A TAB character looks like 4 spaces
+opt.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
+opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+opt.shiftwidth = 2 -- Number of spaces inserted when indenting
+opt.smartindent = true
+vim.schedule(function()
+	opt.clipboard = "unnamedplus"
+end)
 -- Save to undo file
-vim.o.undofile = true
-
--- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
-
+opt.undofile = true
 -- Set terminal gui colors to true
-vim.o.termguicolors = true
+opt.termguicolors = true
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+opt.ignorecase = true
+opt.smartcase = true
+
+opt.hlsearch = false -- Highlights the results of the previous search
+opt.signcolumn = "yes" -- Keep signcolumn on by default
+opt.updatetime = 250 -- Decrease update time
+opt.timeoutlen = 300 -- Decrease mapped sequence wait time
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append("<>[]hl")
+-- disable some default providers
+g.loaded_node_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
+-- UndoTree
+g.undotree_SetFocusWhenToggle = 1
+g.undotree_WindowLayout = 3
+-- add binaries installed by mason.nvim to path
+local is_windows = vim.fn.has("win32") ~= 0
+local sep = is_windows and "\\" or "/"
+local delim = is_windows and ";" or ":"
+vim.env.PATH = table.concat({ vim.fn.stdpath("data"), "mason", "bin" }, sep) .. delim .. vim.env.PATH
