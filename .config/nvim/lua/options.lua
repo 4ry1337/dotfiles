@@ -23,13 +23,19 @@ opt.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
 opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 opt.shiftwidth = 2 -- Number of spaces inserted when indenting
 opt.smartindent = true
+
 vim.schedule(function()
 	opt.clipboard = "unnamedplus"
 end)
+
 -- Save to undo file
 opt.undofile = true
+
 -- Set terminal gui colors to true
 opt.termguicolors = true
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 opt.ignorecase = true
 opt.smartcase = true
@@ -41,14 +47,17 @@ opt.timeoutlen = 300 -- Decrease mapped sequence wait time
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>[]hl")
+
 -- disable some default providers
 g.loaded_node_provider = 0
 g.loaded_python3_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
+
 -- UndoTree
 g.undotree_SetFocusWhenToggle = 1
 g.undotree_WindowLayout = 3
+
 -- add binaries installed by mason.nvim to path
 local is_windows = vim.fn.has("win32") ~= 0
 local sep = is_windows and "\\" or "/"

@@ -26,3 +26,4 @@ require("lazy").setup({
 }, lazy_config)
 
 require("mappings")
+vim.cmd([[colorscheme catppuccin-mocha]])

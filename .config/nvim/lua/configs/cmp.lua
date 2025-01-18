@@ -11,16 +11,16 @@ return {
 		completion = { completeopt = "menu,menuone,noinsert" },
 		mapping = cmp.mapping.preset.insert({
 			-- Select the [n]ext item
-			["<C-j>"] = cmp.mapping.select_next_item(),
+			["<C-n>"] = cmp.mapping.select_next_item(),
 			--['<Tab>'] = cmp.mapping.select_next_item(),
 
 			-- Select the [p]revious item
-			["<C-k>"] = cmp.mapping.select_prev_item(),
+			["<C-p>"] = cmp.mapping.select_prev_item(),
 			--['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
 			-- Scroll the documentation window [b]ack / [f]orward
-			["<C-h>"] = cmp.mapping.scroll_docs(-4),
-			["<C-l>"] = cmp.mapping.scroll_docs(4),
+			["<C-b>"] = cmp.mapping.scroll_docs(-4),
+			["<C-f>"] = cmp.mapping.scroll_docs(4),
 
 			-- Accept ([y]es) the completion.
 			--  This will auto-import if your LSP supports it.

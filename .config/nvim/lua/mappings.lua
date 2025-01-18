@@ -1,7 +1,6 @@
 local map = vim.keymap.set
 
 -- map("n", "<leader>e", vim.cmd.Ex, { desc = "Open vim explorer" })
-map("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Explorer", silent = true })
 
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 
@@ -9,14 +8,24 @@ map("n", "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
 
 -- map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
 
--- Comment
-map("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "toggle zen mode" })
+map("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "toggle zen mode" }) -- ZenMode
 
+-- Comment
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
+-- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
 map("n", "<leader>gu", "<cmd>UndotreeToggle<cr>", { desc = "Undo Tree Toggle" })
+
+local oil = require("oil")
+
+map("n", "<leader>e", function()
+	oil.open()
+end, { desc = "Explorer", silent = true })
+
+map("n", "<Tab>", "gt", { desc = "Next Tab", remap = true })
+map("n", "<S-Tab>", "gT", { desc = "Prev Tab", remap = true })
 
 local builtin = require("telescope.builtin")
 
@@ -106,7 +115,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- When you move your cursor, the highlights will be cleared (the second autocommand).
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
 		if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-			local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+			local highlight_augroup = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
 			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 				buffer = event.buf,
 				group = highlight_augroup,
@@ -120,10 +129,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			})
 
 			vim.api.nvim_create_autocmd("LspDetach", {
-				group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+				group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
 				callback = function(event2)
 					vim.lsp.buf.clear_references()
-					vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+					vim.api.nvim_clear_autocmds({ group = "lsp-highlight", buffer = event2.buf })
 				end,
 			})
 		end

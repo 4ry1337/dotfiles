@@ -38,8 +38,6 @@ return {
 			F12 = "<F12>",
 		},
 	},
-
-	-- Document existing key chains
 	spec = {
 		{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
 		{ "<leader>d", group = "[D]ocument" },
@@ -47,6 +45,6 @@ return {
 		{ "<leader>s", group = "[S]earch" },
 		{ "<leader>w", group = "[W]orkspace" },
 		{ "<leader>t", group = "[T]oggle" },
-		{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+		{ "<leader>g", group = "[G]it", mode = { "n", "v" } },
 	},
 }
