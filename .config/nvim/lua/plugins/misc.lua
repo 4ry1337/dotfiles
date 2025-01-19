@@ -19,4 +19,5 @@ return {
 	{ "mbbill/undotree" },
 	{ "folke/trouble.nvim" },
 	{ "folke/zen-mode.nvim", opts = require("configs.zenmode") },
+	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 }
