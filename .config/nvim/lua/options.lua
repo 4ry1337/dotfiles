@@ -6,48 +6,54 @@ g.have_nerd_font = true
 g.mapleader = " "
 g.maplocalleader = "\\"
 
+-- vim.schedule(function()
+-- 	opt.clipboard = "unnamedplus"
+-- end)
+
 opt.laststatus = 3
 opt.mouse = "a"
 opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 2
 
--- Wrap
-o.textwidth = 60
-o.linebreak = true
-o.breakindent = true
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append("<>[]hl")
 
--- Indenting
+-- Wrap
+opt.wrap = false
+-- opt.textwidth = 60
+-- opt.linebreak = true
+-- opt.breakindent = true
+
+-- Tab
 opt.tabstop = 2 -- A TAB character looks like 4 spaces
 opt.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
 opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
-opt.shiftwidth = 2 -- Number of spaces inserted when indenting
-opt.smartindent = true
-opt.scrolloff = 4 -- Minimal number of screen lines to keep above and below the cursor.
 
-vim.schedule(function()
-	opt.clipboard = "unnamedplus"
-end)
+-- Indenting
+opt.smartindent = true
+opt.shiftwidth = 2 -- Number of spaces inserted when indenting
+
+opt.scrolloff = 8 -- Minimal number of screen lines to keep above and below the cursor.
 
 -- Save to undo file
 opt.undofile = true
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
--- Set terminal gui colors to true
-opt.termguicolors = true
--- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+opt.termguicolors = true -- Set terminal gui colors to true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 opt.ignorecase = true
 opt.smartcase = true
 
-opt.hlsearch = false -- Highlights the results of the previous search
+opt.hlsearch = true -- Highlights the results of the previous search
+opt.incsearch = true -- Incremental search
+
 opt.signcolumn = "yes" -- Keep signcolumn on by default
-opt.updatetime = 250 -- Decrease update time
+
+opt.updatetime = 50 -- Decrease update time
 opt.timeoutlen = 300 -- Decrease mapped sequence wait time
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
-opt.whichwrap:append("<>[]hl")
 
 -- disable some default providers
 g.loaded_node_provider = 0

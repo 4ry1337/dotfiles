@@ -1,32 +1,57 @@
 local map = vim.keymap.set
 
--- map("n", "<leader>e", vim.cmd.Ex, { desc = "Open vim explorer" })
-
-map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
-
+map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear Search Highlights" })
 map("n", "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
+map("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Toggle ZenMode" })
+map("n", "J", "mzJ`z", { desc = "Append next line to the end of current" })
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Selected Down" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Selected Up" })
 
--- map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
+-- Keep cursor in the middle
+map("n", "<C-d>", "<C-d>zz", { desc = "Move Selected Up", remap = true })
+map("n", "<C-u>", "<C-u>zz", { desc = "Move Selected Up", remap = true })
 
-map("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "toggle zen mode" }) -- ZenMode
+map("n", "n", "nzzzv", { desc = "Search", remap = true })
+map("n", "N", "Nzzzv", { desc = "Search", remap = true })
+
+-- Separate clipboards
+map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank into OS clipboard" })
+map("n", "<leader>Y", [["+Y]], { desc = "Yank line into OS clipboard" })
+
+-- Void register
+map("x", "<leader>p", [["_dP]], { desc = "No-copy Paste" })
+map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Void Register Delete" })
 
 -- Comment
-map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
-map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
+map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "Toggle Comment", remap = true })
 
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
 map("n", "<leader>gu", "<cmd>UndotreeToggle<cr>", { desc = "UndoTree Toggle" })
 
+map("n", "<Tab>", "gt", { desc = "Next Tab", remap = true })
+map("n", "<S-Tab>", "gT", { desc = "Prev Tab", remap = true })
+
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
+
+-- Oil
 local oil = require("oil")
 
 map("n", "<C-e>", function()
 	oil.open()
 end, { desc = "Explorer", silent = true })
 
-map("n", "<Tab>", "gt", { desc = "Next Tab", remap = true })
-map("n", "<S-Tab>", "gT", { desc = "Prev Tab", remap = true })
-
+-- Treesitter Mappings
 local builtin = require("telescope.builtin")
 
 map("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
@@ -41,13 +66,13 @@ map("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." fo
 map("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
 -- Slightly advanced example of overriding default behavior and theme
-map("n", "<leader>/", function()
-	-- You can pass additional configuration to Telescope to change the theme, layout, etc.
-	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-		winblend = 10,
-		previewer = false,
-	}))
-end, { desc = "[/] Fuzzily search in current buffer" })
+-- map("n", "<leader>/", function()
+-- 	-- You can pass additional configuration to Telescope to change the theme, layout, etc.
+-- 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+-- 		winblend = 10,
+-- 		previewer = false,
+-- 	}))
+-- end, { desc = "[/] Fuzzily search in current buffer" })
 
 -- It's also possible to pass additional configuration options.
 --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -86,23 +111,27 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- Jump to the type of the word under your cursor.
 		--  Useful when you're not sure what type a variable is and you want to see
 		--  the definition of its *type*, not where it was *defined*.
-		lsp_map("<leader>D", builtin.lsp_type_definitions, "Type [D]efinition")
+		lsp_map("<leader>ld", builtin.lsp_type_definitions, "Type [D]efinition")
 
 		-- Fuzzy find all the symbols in your current document.
 		--  Symbols are things like variables, functions, types, etc.
-		lsp_map("<leader>ds", builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
+		lsp_map("<leader>lsd", builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
 
 		-- Fuzzy find all the symbols in your current workspace.
 		--  Similar to document symbols, except searches over your entire project.
-		lsp_map("<leader>ws", builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+		lsp_map("<leader>lsw", builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
 		-- Rename the variable under your cursor.
 		--  Most Language Servers support renaming across files, etc.
-		lsp_map("<leader>ra", vim.lsp.buf.rename, "[R]e[n]ame")
+		lsp_map("<leader>lr", vim.lsp.buf.rename, "[R]e[n]ame")
 
 		-- Execute a code action, usually your cursor needs to be on top of an error
 		-- or a suggestion from your LSP for this to activate.
-		lsp_map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+		lsp_map("<leader>lc", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+
+		lsp_map("<leader>lh", function()
+			vim.lsp.buf.hover()
+		end, "[H]over displays information")
 
 		-- WARN: This is not Goto Definition, this is Goto Declaration.
 		--  For example, in C this would take you to the header.
@@ -142,20 +171,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		--
 		-- This may be unwanted, since they displace some of your code
 		if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-			lsp_map("<leader>th", function()
+			lsp_map("<leader>lt", function()
 				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-			end, "[T]oggle Inlay [H]ints")
+			end, "[T]oggle Inlay Hints")
 		end
-	end,
-})
-
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
 	end,
 })
