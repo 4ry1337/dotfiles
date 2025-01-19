@@ -16,11 +16,11 @@ map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
-map("n", "<leader>gu", "<cmd>UndotreeToggle<cr>", { desc = "Undo Tree Toggle" })
+map("n", "<leader>gu", "<cmd>UndotreeToggle<cr>", { desc = "UndoTree Toggle" })
 
 local oil = require("oil")
 
-map("n", "<leader>e", function()
+map("n", "<C-e>", function()
 	oil.open()
 end, { desc = "Explorer", silent = true })
 

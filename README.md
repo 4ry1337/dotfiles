@@ -55,7 +55,7 @@ makepkg -si
 pacman packages installation:
 ```
 
-sudo pacman -S alacritty telegram-dekstop docker obsidian okular libreoffice-still obs-studio git github-cli ghq lazygit neovim tmux mtr iperf3 ldns aria2 socat nmap ipcalc strace ltrace lsof lshw zsh zoxide eza fd jq nvidia-utils nvidia-settings zip unzip ntfs-3g fzf tree stow which wl-clipboard xclip ripgrep xorg-xwayland xwaylandvideobridge fastfetch valgrind
+sudo pacman -S alacritty telegram-dekstop docker obsidian okular libreoffice-still obs-studio git github-cli ghq lazygit neovim tmux mtr iperf3 ldns aria2 bash bc coreutils playerctl socat nmap ipcalc strace ltrace lsof lshw zsh zoxide eza fd jq nvidia-utils nvidia-settings zip unzip ntfs-3g fzf tree stow which wl-clipboard xclip ripgrep xorg-xwayland xwaylandvideobridge fastfetch valgrind
 ```
 
 yay packages installation:

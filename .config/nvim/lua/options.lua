@@ -9,20 +9,21 @@ g.maplocalleader = "\\"
 opt.laststatus = 3
 opt.mouse = "a"
 opt.number = true
-opt.numberwidth = 2
 opt.relativenumber = true
-vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor.
+opt.numberwidth = 2
+
 -- Wrap
-o.wrap = false
--- o.textwidth = 60
--- o.linebreak = true
--- o.breakindent = true
+o.textwidth = 60
+o.linebreak = true
+o.breakindent = true
+
 -- Indenting
 opt.tabstop = 2 -- A TAB character looks like 4 spaces
 opt.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
 opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 opt.shiftwidth = 2 -- Number of spaces inserted when indenting
 opt.smartindent = true
+opt.scrolloff = 4 -- Minimal number of screen lines to keep above and below the cursor.
 
 vim.schedule(function()
 	opt.clipboard = "unnamedplus"
