@@ -23,10 +23,12 @@ return {
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 			local config = require("configs.mason")
+
 			require("mason").setup(config.mason)
 			require("mason-tool-installer").setup(config.tool_installer)
 
 			local servers = require("configs.lsp")
+
 			require("mason-lspconfig").setup({
 				handlers = {
 					function(server_name)

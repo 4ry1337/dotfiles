@@ -1,12 +1,15 @@
 local map = vim.keymap.set
 
+-- let j and k move up and down lines that have been wrapped
+map("n", "j", "gj")
+map("n", "k", "gk")
+
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear Search Highlights" })
 map("n", "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
 map("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Toggle ZenMode" })
 map("n", "J", "mzJ`z", { desc = "Append next line to the end of current" })
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Selected Down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Selected Up" })
-
 -- Keep cursor in the middle
 map("n", "<C-d>", "<C-d>zz", { desc = "Move Selected Up", remap = true })
 map("n", "<C-u>", "<C-u>zz", { desc = "Move Selected Up", remap = true })
@@ -108,6 +111,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		--  Useful when your language has ways of declaring types without an actual implementation.
 		lsp_map("gI", builtin.lsp_implementations, "[G]oto [I]mplementation")
 
+		lsp_map("<leader>lq", "<cmd>LspRestart<cr>", "Restart Lsp Server")
+
 		-- Jump to the type of the word under your cursor.
 		--  Useful when you're not sure what type a variable is and you want to see
 		--  the definition of its *type*, not where it was *defined*.
@@ -177,3 +182,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 	end,
 })
+
+-- Trouble
+map("n", "<leader>tx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics" })
+map("n", "<leader>tX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics" })
+map("n", "<leader>ts", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Symbols" })
+map(
+	"n",
+	"<leader>tl",
+	"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+	{ desc = "LSP Definitions / references / ... " }
+)
+map("n", "<leader>tL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List" })
+map("n", "<leader>tQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List" })
+map("n", "<leader>tt", function()
+	vim.diagnostic.open_float({})
+end, { desc = "Error in floating window" })

@@ -1,5 +1,7 @@
 return {
-	clangd = {},
+	clangd = {
+		fallbackFlags = { "-std=c++20" },
+	},
 	html = {},
 	cssls = {},
 	sqlls = {},
@@ -7,6 +9,10 @@ return {
 	tailwindcss = {},
 	eslint = {},
 	ts_ls = {},
-	rust_analyzer = {},
+	rust_analyzer = {
+		check = {
+			command = "clippy",
+		},
+	},
 	jdtls = {},
 }

@@ -21,10 +21,10 @@ opt.numberwidth = 2
 opt.whichwrap:append("<>[]hl")
 
 -- Wrap
-opt.wrap = false
--- opt.textwidth = 60
--- opt.linebreak = true
--- opt.breakindent = true
+-- opt.wrap = false
+opt.textwidth = 80
+opt.linebreak = true
+opt.breakindent = true
 
 -- Tab
 opt.tabstop = 2 -- A TAB character looks like 4 spaces

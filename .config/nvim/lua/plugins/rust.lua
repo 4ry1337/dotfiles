@@ -1,11 +1,23 @@
 return {
 	{
 		"saecki/crates.nvim",
+		event = { "BufRead Cargo.toml" },
 		ft = { "rust", "toml" },
 		config = function(_, opts)
-			local crates = require("crates")
-			crates.setup(opts)
-			crates.show()
+			require("crates").setup(opts)
+			require("crates").show()
 		end,
+	},
+	-- {
+	-- 	"mrcjkb/rustaceanvim",
+	-- 	ft = "rust",
+	-- },
+	{
+		"rust-lang/rust.vim",
+		ft = "rust",
+	},
+	{
+		"vxpm/ferris.nvim",
+		ft = "rust",
 	},
 }
