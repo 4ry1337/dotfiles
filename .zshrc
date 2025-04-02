@@ -1,3 +1,4 @@
+export PATH="$PATH:$HOME/.local/bin"
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 export EDITOR=nvim
 
@@ -62,6 +63,8 @@ eval "$(fzf --zsh)"
 
 source /usr/share/nvm/init-nvm.sh
 export TERMINFO="/usr/share/terminfo"
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

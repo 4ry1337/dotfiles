@@ -26,4 +26,10 @@ return {
 		---@type render.md.UserConfig
 		opts = {},
 	},
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
 }

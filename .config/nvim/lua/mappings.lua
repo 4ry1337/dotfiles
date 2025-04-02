@@ -26,8 +26,8 @@ map("x", "<leader>p", [["_dP]], { desc = "No-copy Paste" })
 map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Void Register Delete" })
 
 -- Comment
-map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
-map("v", "<leader>/", "gc", { desc = "Toggle Comment", remap = true })
+-- map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
+-- map("v", "<leader>/", "gc", { desc = "Toggle Comment", remap = true })
 
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
@@ -134,9 +134,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- or a suggestion from your LSP for this to activate.
 		lsp_map("<leader>lc", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 
-		lsp_map("<leader>lh", function()
-			vim.lsp.buf.hover()
-		end, "[H]over displays information")
+		-- lsp_map("KK", function()
+		-- 	vim.lsp.buf.hover()
+		-- end, "[H]over displays information")
 
 		-- WARN: This is not Goto Definition, this is Goto Declaration.
 		--  For example, in C this would take you to the header.
