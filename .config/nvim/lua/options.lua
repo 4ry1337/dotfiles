@@ -2,6 +2,11 @@ local opt = vim.opt
 local o = vim.o
 local g = vim.g
 
+vim.cmd([[
+syntax enable
+filetype plugin indent on
+]])
+
 g.have_nerd_font = true
 g.mapleader = " "
 g.maplocalleader = "\\"

@@ -30,6 +30,8 @@ return {
 			local servers = require("configs.lsp")
 
 			require("mason-lspconfig").setup({
+				ensure_installed = config.tool_installer,
+				automatic_installation = true,
 				handlers = {
 					function(server_name)
 						local server = servers[server_name] or {}

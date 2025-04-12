@@ -1,6 +1,10 @@
 return {
 	clangd = {
-		fallbackFlags = { "-std=c++20" },
+		settings = {
+			clangd = {
+				fallbackFlags = { "-std=c++20" },
+			},
+		},
 	},
 	html = {},
 	cssls = {},
@@ -8,10 +12,74 @@ return {
 	dockerls = {},
 	tailwindcss = {},
 	eslint = {},
-	ts_ls = {},
+	vtsls = {
+		settings = {
+			vtsls = {
+				autoUseWorkspaceTsdk = true,
+				experimental = {
+					completion = {
+						enableServerSideFuzzyMatch = true,
+						enableProjectDiagnostics = true,
+					},
+				},
+			},
+			typescript = {
+				format = {
+					semicolons = "remove",
+					insertSpaceBeforeFunctionParenthesis = false,
+					placeOpenBraceOnNewLineForFunctions = false,
+					insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces = true,
+					insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets = true,
+					insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis = true,
+					trimTrailingWhitespace = true,
+					convertTabsToSpaces = true,
+					tabSize = 2,
+					indentSize = 2,
+				},
+				preferences = {
+					importModuleSpecifier = "shortest",
+					quoteStyle = "single",
+					includePackageJsonAutoImports = "on",
+					organizeImports = true,
+					renameMatchingJsxTags = true,
+					useAliasesForRenames = true,
+				},
+				suggest = {
+					completeFunctionCalls = false,
+					includeAutomaticOptionalChainCompletions = true,
+				},
+			},
+			javascript = {
+				format = {
+					semicolons = "remove",
+					quoteStyle = "single",
+					trimTrailingWhitespace = true,
+					convertTabsToSpaces = true,
+					tabSize = 2,
+					indentSize = 2,
+				},
+				preferences = {
+					importModuleSpecifier = "shortest",
+					quoteStyle = "single",
+				},
+			},
+		},
+	},
 	rust_analyzer = {
-		check = {
-			command = "clippy",
+		settings = {
+			["rust-analyzer"] = {
+				checkOnSave = {
+					command = "clippy",
+				},
+				diagnostics = {
+					enable = false,
+				},
+				{
+					rustfmt = {
+						extraArgs = { "+nightly" },
+					},
+				},
+			},
 		},
 	},
 	jdtls = {},

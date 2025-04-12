@@ -47,7 +47,7 @@ return {
 		{ "<leader>s", group = "[S]earch" },
 		{ "<leader>t", group = "[T]rouble" },
 		-- { "<leader>w", group = "[W]orkspace" },
-		-- { "<leader>t", group = "[T]oggle" },
+		{ "<leader>t", group = "[T]rouble" },
 		{ "<leader>g", group = "[G]it", mode = { "n", "v" } },
 	},
 }

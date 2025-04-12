@@ -69,13 +69,13 @@ map("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." fo
 map("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
 -- Slightly advanced example of overriding default behavior and theme
--- map("n", "<leader>/", function()
--- 	-- You can pass additional configuration to Telescope to change the theme, layout, etc.
--- 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
--- 		winblend = 10,
--- 		previewer = false,
--- 	}))
--- end, { desc = "[/] Fuzzily search in current buffer" })
+map("n", "<leader>/", function()
+	-- You can pass additional configuration to Telescope to change the theme, layout, etc.
+	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		winblend = 10,
+		previewer = false,
+	}))
+end, { desc = "[/] Fuzzily search in current buffer" })
 
 -- It's also possible to pass additional configuration options.
 --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -91,6 +91,16 @@ map("n", "<leader>sn", function()
 	builtin.find_files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "[S]earch [N]eovim files" })
 
+vim.keymap.del("n", "gri")
+vim.keymap.del("n", "grn")
+vim.keymap.del("n", "gra")
+vim.keymap.del("n", "grr")
+vim.keymap.del("n", "gbc")
+vim.keymap.del("n", "gcO")
+vim.keymap.del("n", "gcc")
+vim.keymap.del("n", "gco")
+vim.keymap.del("n", "gcA")
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 	callback = function(event)
@@ -99,32 +109,32 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 		end
 
+		lsp_map("<leader>lq", "<cmd>LspRestart<cr>", "Restart Lsp Server")
+
 		-- Jump to the definition of the word under your cursor.
 		--  This is where a variable was first declared, or where a function is defined, etc.
 		--  To jump back, press <C-t>.
-		lsp_map("gd", builtin.lsp_definitions, "[G]oto [D]efinition")
+		lsp_map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
 		-- Find references for the word under your cursor.
-		lsp_map("gr", builtin.lsp_references, "[G]oto [R]eferences")
+		lsp_map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 
 		-- Jump to the implementation of the word under your cursor.
 		--  Useful when your language has ways of declaring types without an actual implementation.
-		lsp_map("gI", builtin.lsp_implementations, "[G]oto [I]mplementation")
-
-		lsp_map("<leader>lq", "<cmd>LspRestart<cr>", "Restart Lsp Server")
+		lsp_map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 
 		-- Jump to the type of the word under your cursor.
 		--  Useful when you're not sure what type a variable is and you want to see
 		--  the definition of its *type*, not where it was *defined*.
-		lsp_map("<leader>ld", builtin.lsp_type_definitions, "Type [D]efinition")
+		lsp_map("<leader>ld", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 
 		-- Fuzzy find all the symbols in your current document.
 		--  Symbols are things like variables, functions, types, etc.
-		lsp_map("<leader>lsd", builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
+		lsp_map("<leader>lsd", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 
 		-- Fuzzy find all the symbols in your current workspace.
 		--  Similar to document symbols, except searches over your entire project.
-		lsp_map("<leader>lsw", builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+		lsp_map("<leader>lsw", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
 		-- Rename the variable under your cursor.
 		--  Most Language Servers support renaming across files, etc.
@@ -134,9 +144,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- or a suggestion from your LSP for this to activate.
 		lsp_map("<leader>lc", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 
-		-- lsp_map("KK", function()
-		-- 	vim.lsp.buf.hover()
-		-- end, "[H]over displays information")
+		lsp_map("KK", function()
+			vim.lsp.buf.hover()
+		end, "[H]over displays information")
 
 		-- WARN: This is not Goto Definition, this is Goto Declaration.
 		--  For example, in C this would take you to the header.
@@ -195,6 +205,7 @@ map(
 )
 map("n", "<leader>tL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List" })
 map("n", "<leader>tQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List" })
-map("n", "<leader>tt", function()
+
+map("n", "TT", function()
 	vim.diagnostic.open_float({})
 end, { desc = "Error in floating window" })
