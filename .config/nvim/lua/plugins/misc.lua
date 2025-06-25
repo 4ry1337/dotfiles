@@ -32,4 +32,10 @@ return {
 			require("Comment").setup()
 		end,
 	},
+	{
+		"brianhuster/live-preview.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+	},
 }
