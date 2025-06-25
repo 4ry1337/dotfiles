@@ -16,6 +16,7 @@ return {
 			"jdtls",
 			"vtsls",
 			"cssls",
+			"tailwindcss",
 		},
 		run_on_start = true,
 		debounce_hours = 5,
