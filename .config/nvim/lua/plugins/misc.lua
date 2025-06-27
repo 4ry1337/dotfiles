@@ -21,6 +21,7 @@ return {
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
+		event = "VeryLazy",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
@@ -31,11 +32,5 @@ return {
 		config = function()
 			require("Comment").setup()
 		end,
-	},
-	{
-		"brianhuster/live-preview.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
 	},
 }
