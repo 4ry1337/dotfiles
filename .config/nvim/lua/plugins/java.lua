@@ -1,5 +1,5 @@
 return {
-	{
+	--[[ {
 		"mfussenegger/nvim-jdtls",
 		config = function()
 			local config = {
@@ -25,5 +25,5 @@ return {
 			}
 			require("jdtls").start_or_attach(config)
 		end,
-	},
+	}, ]]
 }

@@ -11,7 +11,7 @@ return {
 			"dockerfile-language-server",
 			"docker-compose-language-service",
 			"buf-language-server",
-			-- "typescript-language-server",
+			"typescript-language-server",
 			"codelldb",
 			"jdtls",
 			"vtsls",
@@ -23,7 +23,7 @@ return {
 		integrations = {
 			["mason-lspconfig"] = true,
 			-- ["mason-null-ls"] = true,
-			-- ["mason-nvim-dap"] = true,
+			["mason-nvim-dap"] = true,
 		},
 	},
 	mason = {

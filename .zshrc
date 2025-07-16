@@ -1,6 +1,9 @@
 export PATH="$PATH:$HOME/.local/bin"
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 export EDITOR=nvim
+export JAVA_HOME=/opt/android-studio/jbr
+export ANDROID_HOME="$HOME/Android/Sdk"
+export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -74,8 +77,11 @@ else
     if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
         . "/opt/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="$PATH:/opt/miniconda3/bin"
+        export PATH="/opt/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# opencode
+export PATH=/home/rakhat/.opencode/bin:$PATH
