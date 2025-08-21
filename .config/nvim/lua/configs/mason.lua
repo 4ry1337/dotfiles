@@ -10,7 +10,7 @@ return {
 			"sql-formatter",
 			"dockerfile-language-server",
 			"docker-compose-language-service",
-			"buf-language-server",
+			"buf_ls",
 			"typescript-language-server",
 			"codelldb",
 			"vtsls",
