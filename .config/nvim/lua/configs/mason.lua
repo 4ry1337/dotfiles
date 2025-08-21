@@ -13,7 +13,6 @@ return {
 			"buf-language-server",
 			"typescript-language-server",
 			"codelldb",
-			"jdtls",
 			"vtsls",
 			"cssls",
 			"tailwindcss",

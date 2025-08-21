@@ -2,7 +2,7 @@ return {
 	ensure_installed = {
 		"rust",
 		"c",
-		"java",
+		"cpp",
 		"sql",
 		"javascript",
 		"lua",

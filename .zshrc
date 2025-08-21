@@ -85,3 +85,10 @@ unset __conda_setup
 
 # opencode
 export PATH=/home/rakhat/.opencode/bin:$PATH
+
+# bun completions
+[ -s "/home/rakhat/.bun/_bun" ] && source "/home/rakhat/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
