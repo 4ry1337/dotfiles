@@ -1,9 +1,13 @@
 return {
 	clangd = {
-		settings = {
-			clangd = {
-				fallbackFlags = { "-std=c++20" },
-			},
+		cmd = {
+			"clangd",
+			"--background-index",
+			"--clang-tidy",
+			-- "--log=verbose",
+		},
+		init_options = {
+			fallbackFlags = { "-std=c++23" },
 		},
 	},
 	html = {},
@@ -82,5 +86,4 @@ return {
 			},
 		},
 	},
-	jdtls = {},
 }
