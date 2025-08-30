@@ -19,14 +19,14 @@ return {
 	{ "mbbill/undotree" },
 	{ "folke/zen-mode.nvim", opts = require("configs.zenmode") },
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		event = "VeryLazy",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-		---@module 'render-markdown'
-		---@type render.md.UserConfig
-		opts = {},
-	},
+	-- {
+	-- 	"MeanderingProgrammer/render-markdown.nvim",
+	-- 	event = "VeryLazy",
+	-- 	dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+	-- 	---@module 'render-markdown'
+	-- 	---@type render.md.UserConfig
+	-- 	opts = {},
+	-- },
 	{
 		"numToStr/Comment.nvim",
 		config = function()

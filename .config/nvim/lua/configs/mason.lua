@@ -11,7 +11,7 @@ return {
 			"dockerfile-language-server",
 			"docker-compose-language-service",
 			"buf_ls",
-			"typescript-language-server",
+			-- "typescript-language-server",
 			"codelldb",
 			"vtsls",
 			"cssls",
