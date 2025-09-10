@@ -4,6 +4,7 @@ return {
 			"clangd",
 			"--background-index",
 			"--clang-tidy",
+			"-std=c++23",
 			-- "--log=verbose",
 		},
 		init_options = {
@@ -15,6 +16,17 @@ return {
 	sqlls = {},
 	dockerls = {},
 	tailwindcss = {},
+	gopls = {
+		settings = {
+			gopls = {
+				completeUnimported = true,
+				usePlaceholders = true,
+				analysis = {
+					unusedparams = true,
+				},
+			},
+		},
+	},
 	eslint = {},
 	vtsls = {
 		settings = {

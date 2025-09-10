@@ -1,9 +1,18 @@
 export PATH="$PATH:$HOME/.local/bin"
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 export EDITOR=nvim
-export JAVA_HOME=/opt/android-studio/jbr
-export ANDROID_HOME="$HOME/Android/Sdk"
-export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
+export TERMINFO="/usr/share/terminfo"
+
+# bun completions
+[ -s "/home/rakhat/.bun/_bun" ] && source "/home/rakhat/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# go
+export GOPATH=$HOME/go
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -63,32 +72,3 @@ alias mkdir='mkdir -p'
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zen.toml)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
-
-source /usr/share/nvm/init-nvm.sh
-export TERMINFO="/usr/share/terminfo"
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# opencode
-export PATH=/home/rakhat/.opencode/bin:$PATH
-
-# bun completions
-[ -s "/home/rakhat/.bun/_bun" ] && source "/home/rakhat/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
