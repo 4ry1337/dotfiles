@@ -19,15 +19,15 @@ lines = 80
 size = 20
 
 [font.bold]
-family = "Iosevka"
+family = "IosevkaTerm"
 style = "Bold"
 
 [font.italic]
-family = "Iosevka"
+family = "IosevkaTerm"
 style = "Italic"
 
 [font.normal]
-family = "Iosevka"
+family = "IosevkaTerm"
 style = "Regular"
 
 [font.offset]

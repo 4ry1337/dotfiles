@@ -2,6 +2,9 @@ export PATH="$PATH:$HOME/.local/bin"
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 export EDITOR=nvim
 export TERMINFO="/usr/share/terminfo"
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
+# export ANDROID_HOME="$HOME/Android/Sdk"
+# export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
 
 # bun completions
 [ -s "/home/rakhat/.bun/_bun" ] && source "/home/rakhat/.bun/_bun"

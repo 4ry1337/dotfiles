@@ -77,6 +77,7 @@ return {
 				preferences = {
 					importModuleSpecifier = "shortest",
 					quoteStyle = "single",
+					organizeImports = true,
 				},
 			},
 		},
