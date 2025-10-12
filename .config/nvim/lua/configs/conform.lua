@@ -23,7 +23,7 @@ return {
 			},
 		},
 		clang_format = {
-			prepend_args = { "--style=Google" },
+			prepend_args = { "--style=LLVM" },
 		},
 	},
 }

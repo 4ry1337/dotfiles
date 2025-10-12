@@ -4,11 +4,9 @@ return {
 			"clangd",
 			"--background-index",
 			"--clang-tidy",
-			"-std=c++23",
-			-- "--log=verbose",
 		},
-		init_options = {
-			fallbackFlags = { "-std=c++23" },
+		settings = {
+			fallbackFlags = { "-std=c++20" },
 		},
 	},
 	html = {},
