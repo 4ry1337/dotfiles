@@ -47,17 +47,6 @@ return {
 					end,
 				},
 			})
-
-			-- Fallback: setup servers not managed by mason-lspconfig (if any)
-			for server_name, server in pairs(servers) do
-				local ok = pcall(function()
-					return require("mason-lspconfig.mappings.server").lspconfig_to_package[server_name]
-				end)
-				if not ok then
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
-				end
-			end
 		end,
 	},
 }
