@@ -1,7 +1,9 @@
 return {
-	open = true,
+	open = false,
 	columns = {
 		"icon",
+		"size",
+		-- "permissions",
 	},
 	view_options = {
 		show_hidden = true,

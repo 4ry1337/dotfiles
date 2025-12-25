@@ -14,7 +14,6 @@ return {
 			-- "typescript-language-server",
 			"gopls",
 			"codelldb",
-			"eslint",
 			"vtsls",
 			"cssls",
 			"tailwindcss",

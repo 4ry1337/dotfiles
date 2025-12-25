@@ -25,7 +25,6 @@ return {
 			},
 		},
 	},
-	eslint = {},
 	vtsls = {
 		settings = {
 			vtsls = {
@@ -83,16 +82,14 @@ return {
 	rust_analyzer = {
 		settings = {
 			["rust-analyzer"] = {
-				checkOnSave = {
+				check = {
 					command = "clippy",
 				},
 				diagnostics = {
 					enable = false,
 				},
-				{
-					rustfmt = {
-						extraArgs = { "+nightly" },
-					},
+				rustfmt = {
+					extraArgs = { "+nightly" },
 				},
 			},
 		},
