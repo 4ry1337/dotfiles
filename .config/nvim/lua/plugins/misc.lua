@@ -1,6 +1,6 @@
 return {
-	{ "tpope/vim-sleuth", event = "VeryLazy" },
-	{ "m4xshen/smartcolumn.nvim", event = "VeryLazy" },
+	-- { "tpope/vim-sleuth", event = "VeryLazy" },
+	-- { "m4xshen/smartcolumn.nvim", event = "VeryLazy" },
 	{ "HiPhish/rainbow-delimiters.nvim", event = "VeryLazy" },
 	{
 		"nvim-lualine/lualine.nvim",

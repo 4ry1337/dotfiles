@@ -30,6 +30,7 @@ opt.whichwrap:append("<>[]hl")
 opt.textwidth = 80
 opt.linebreak = true
 opt.breakindent = true
+opt.colorcolumn = "80"
 
 -- Tab
 opt.tabstop = 2 -- A TAB character looks like 4 spaces
