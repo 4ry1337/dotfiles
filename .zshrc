@@ -3,8 +3,6 @@ export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 export EDITOR=nvim
 export TERMINFO="/usr/share/terminfo"
 export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
-# export ANDROID_HOME="$HOME/Android/Sdk"
-# export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
 
 # bun completions
 [ -s "/home/rakhat/.bun/_bun" ] && source "/home/rakhat/.bun/_bun"
@@ -28,9 +26,6 @@ fi
 
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
