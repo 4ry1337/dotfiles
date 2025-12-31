@@ -1,22 +1,23 @@
 return {
-	-- { "tpope/vim-sleuth", event = "VeryLazy" },
-	-- { "m4xshen/smartcolumn.nvim", event = "VeryLazy" },
-	{ "HiPhish/rainbow-delimiters.nvim", event = "VeryLazy" },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		event = "VeryLazy",
 		opts = require("configs.lualine"),
 	},
-	{
-		"folke/todo-comments.nvim",
-		event = "VimEnter",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
+	{ "HiPhish/rainbow-delimiters.nvim", event = "VeryLazy" },
+	{ -- Add indentation guides even on blank lines
+		"lukas-reineke/indent-blankline.nvim",
+		-- Enable `lukas-reineke/indent-blankline.nvim`
+		-- See `:help ibl`
+		main = "ibl",
+		opts = {},
 	},
+	-- { "tpope/vim-sleuth", event = "VeryLazy" },
+	-- { "m4xshen/smartcolumn.nvim", event = "VeryLazy" },
 	{ "lewis6991/gitsigns.nvim", opts = require("configs.gitsigns") },
-	{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	{ "mbbill/undotree" },
+	{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	{ "folke/zen-mode.nvim", opts = require("configs.zenmode") },
 	-- { "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 	-- {
@@ -33,22 +34,10 @@ return {
 			require("Comment").setup()
 		end,
 	},
-	{ -- Add indentation guides even on blank lines
-		"lukas-reineke/indent-blankline.nvim",
-		-- Enable `lukas-reineke/indent-blankline.nvim`
-		-- See `:help ibl`
-		main = "ibl",
-		opts = {},
-	},
 	{
-		"terrastruct/d2-vim",
-		ft = { "d2" },
-		dependencies = {
-			{
-				"ravsii/tree-sitter-d2",
-				dependencies = { "nvim-treesitter/nvim-treesitter" },
-				build = "make nvim-install",
-			},
-		},
+		"folke/todo-comments.nvim",
+		event = "VimEnter",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = { signs = false },
 	},
 }
