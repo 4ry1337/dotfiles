@@ -1,41 +1,51 @@
 local map = vim.keymap.set
 
--- let j and k move up and down lines that have been wrapped
-map("n", "j", "gj")
-map("n", "k", "gk")
+-- file
+map("n", "<C-e>", require("oil").open, { desc = "Explorer", silent = true })
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
-map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear Search Highlights" })
-map("n", "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
-map("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Toggle ZenMode" })
-map("n", "J", "mzJ`z", { desc = "Append next line to the end of current" })
-map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Selected Down" })
-map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Selected Up" })
--- Keep cursor in the middle
+-- movement
+-- better up/down
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+-- scroll keep cursor in the middle
 map("n", "<C-d>", "<C-d>zz", { desc = "Move Selected Up", remap = true })
 map("n", "<C-u>", "<C-u>zz", { desc = "Move Selected Up", remap = true })
+-- tmux
+map("n", "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>")
+map("n", "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>")
+map("n", "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>")
+map("n", "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>")
+map("n", "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>")
+-- tabs
+map("n", "<Tab>", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<S-Tab>", "<cmd>tabprevious<cr>", { desc = "Prev Tab" })
 
-map("n", "n", "nzzzv", { desc = "Search", remap = true })
-map("n", "N", "Nzzzv", { desc = "Search", remap = true })
+-- editing
+map("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Toggle ZenMode" })
+-- better indenting
+map("x", "<", "<gv")
+map("x", ">", ">gv")
+-- move lines
+map("n", "J", "mzJ`z", { desc = "Append next line to the end of current" })
+map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
+map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
+map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+-- git
+map("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
+-- undotree
+map("n", "<leader>tu", "<cmd>UndotreeToggle<cr>", { desc = "Toggle UndoTree" })
 
--- Separate clipboards
-map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank into OS clipboard" })
+-- clipboards
 map("n", "<leader>Y", [["+Y]], { desc = "Yank line into OS clipboard" })
-
--- Void register
 map("x", "<leader>p", [["_dP]], { desc = "No-copy Paste" })
+map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank into OS clipboard" })
 map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Void Register Delete" })
-
--- Comment
--- map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
--- map("v", "<leader>/", "gc", { desc = "Toggle Comment", remap = true })
-
--- Git
-map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
-map("n", "<leader>gu", "<cmd>UndotreeToggle<cr>", { desc = "UndoTree Toggle" })
-
-map("n", "<Tab>", "gt", { desc = "Next Tab", remap = true })
-map("n", "<S-Tab>", "gT", { desc = "Prev Tab", remap = true })
-
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -47,16 +57,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Oil
-local oil = require("oil")
+-- search
+map("n", "n", "nzzzv", { desc = "Search", remap = true })
+map("n", "N", "Nzzzv", { desc = "Search", remap = true })
+map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear Search Highlights" })
 
-map("n", "<C-e>", function()
-	oil.open()
-end, { desc = "Explorer", silent = true })
-
--- Treesitter Mappings
 local builtin = require("telescope.builtin")
-
 map("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 map("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 map("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
@@ -68,29 +74,7 @@ map("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 map("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 map("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
--- Slightly advanced example of overriding default behavior and theme
-map("n", "<leader>/", function()
-	-- You can pass additional configuration to Telescope to change the theme, layout, etc.
-	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-		winblend = 10,
-		previewer = false,
-	}))
-end, { desc = "[/] Fuzzily search in current buffer" })
-
--- It's also possible to pass additional configuration options.
---  See `:help telescope.builtin.live_grep()` for information about particular keys
-map("n", "<leader>s/", function()
-	builtin.live_grep({
-		grep_open_files = true,
-		prompt_title = "Live Grep in Open Files",
-	})
-end, { desc = "[S]earch [/] in Open Files" })
-
--- Shortcut for searching your Neovim configuration files
-map("n", "<leader>sn", function()
-	builtin.find_files({ cwd = vim.fn.stdpath("config") })
-end, { desc = "[S]earch [N]eovim files" })
-
+-- lsp
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 	callback = function(event)
@@ -130,13 +114,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- Rename the variable under your cursor.
 		--  Most Language Servers support renaming across files, etc.
-		lsp_map("<leader>lr", vim.lsp.buf.rename, "[R]ename")
+		lsp_map("grn", vim.lsp.buf.rename, "[R]ename")
 
 		-- Execute a code action, usually your cursor needs to be on top of an error
 		-- or a suggestion from your LSP for this to activate.
-		lsp_map("<leader>lc", vim.lsp.buf.code_action, "[C]ode Action", { "n", "x" })
-
-		lsp_map("<leader>tl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", "[T]oggle")
+		lsp_map("gra", vim.lsp.buf.code_action, "Code [A]ction", { "n", "x" })
 
 		-- The following code creates a keymap to toggle inlay hints in your
 		-- code, if the language server you are using supports them
@@ -195,15 +177,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- Trouble
-
+-- trouble
+map("n", "<leader>tl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", { desc = "[T]oggle LSP" })
 map("n", "<leader>tx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "[T]oggle Diagnostics" })
 map("n", "<leader>tX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "[T]oggle Buffer Diagnostics" })
-
-map("n", "<leader>tL", "<cmd>Trouble loclist toggle<cr>", { desc = "[T]oggle Location List" })
-map("n", "<leader>tQ", "<cmd>Trouble qflist toggle<cr>", { desc = "[T]oggle Quickfix List" })
-
-map("n", "<leader>tt", function()
+map("n", "<leader>tl", "<cmd>Trouble loclist toggle<cr>", { desc = "[T]oggle Location List" })
+map("n", "<leader>tq", "<cmd>Trouble qflist toggle<cr>", { desc = "[T]oggle Quickfix List" })
+map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
+map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
+map("n", "TT", function()
 	vim.diagnostic.open_float({})
 end, { desc = "Error in floating window" })
 
