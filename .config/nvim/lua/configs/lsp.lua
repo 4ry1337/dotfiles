@@ -1,4 +1,6 @@
+--- @module 'mason-lspconfig'
 return {
+	--- @type lspconfig.Config
 	clangd = {
 		cmd = {
 			"clangd",
@@ -9,11 +11,17 @@ return {
 			fallbackFlags = { "-std=c++20" },
 		},
 	},
+	--- @type lspconfig.Config
 	html = {},
+	--- @type lspconfig.Config
 	cssls = {},
+	--- @type lspconfig.Config
 	sqlls = {},
+	--- @type lspconfig.Config
 	dockerls = {},
+	--- @type lspconfig.Config
 	tailwindcss = {},
+	--- @type lspconfig.Config
 	gopls = {
 		settings = {
 			gopls = {
@@ -25,6 +33,7 @@ return {
 			},
 		},
 	},
+	--- @type lspconfig.Config
 	vtsls = {
 		settings = {
 			vtsls = {
@@ -79,6 +88,7 @@ return {
 			},
 		},
 	},
+	--- @type lspconfig.Config
 	rust_analyzer = {
 		settings = {
 			["rust-analyzer"] = {

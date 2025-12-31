@@ -1,3 +1,5 @@
+---@module 'gitsigns'
+---@type Gitsigns.Config
 return {
 	-- signs = {
 	-- 	add = { text = "│" },

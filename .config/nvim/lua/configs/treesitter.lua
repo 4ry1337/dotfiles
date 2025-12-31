@@ -1,3 +1,5 @@
+---@module 'nvim-treesitter'
+---@type {[string]: TSModule}
 return {
 	ensure_installed = {
 		"rust",
