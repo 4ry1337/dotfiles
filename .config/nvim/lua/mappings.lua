@@ -91,16 +91,6 @@ map("n", "<leader>sn", function()
 	builtin.find_files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "[S]earch [N]eovim files" })
 
-vim.keymap.del("n", "gri")
-vim.keymap.del("n", "grn")
-vim.keymap.del("n", "gra")
-vim.keymap.del("n", "grr")
-vim.keymap.del("n", "gbc")
-vim.keymap.del("n", "gcO")
-vim.keymap.del("n", "gcc")
-vim.keymap.del("n", "gco")
-vim.keymap.del("n", "gcA")
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 	callback = function(event)
@@ -109,48 +99,42 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 		end
 
-		lsp_map("<leader>lq", "<cmd>LspRestart<cr>", "Restart Lsp Server")
+		-- Rename the variable under your cursor.
+		--  Most Language Servers support renaming across files, etc.
+		lsp_map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+
+		-- Execute a code action, usually your cursor needs to be on top of an error
+		-- or a suggestion from your LSP for this to activate.
+		lsp_map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+
+		-- Find references for the word under your cursor.
+		lsp_map("grr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+
+		-- Jump to the implementation of the word under your cursor.
+		--  Useful when your language has ways of declaring types without an actual implementation.
+		lsp_map("gri", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 
 		-- Jump to the definition of the word under your cursor.
 		--  This is where a variable was first declared, or where a function is defined, etc.
 		--  To jump back, press <C-t>.
-		lsp_map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+		lsp_map("grd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
-		-- Find references for the word under your cursor.
-		lsp_map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+		-- WARN: This is not Goto Definition, this is Goto Declaration.
+		--  For example, in C this would take you to the header.
+		lsp_map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-		-- Jump to the implementation of the word under your cursor.
-		--  Useful when your language has ways of declaring types without an actual implementation.
-		lsp_map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+		-- Fuzzy find all the symbols in your current document.
+		--  Symbols are things like variables, functions, types, etc.
+		lsp_map("gO", require("telescope.builtin").lsp_document_symbols, "Open Document Symbols")
+
+		-- Fuzzy find all the symbols in your current workspace.
+		--  Similar to document symbols, except searches over your entire project.
+		lsp_map("gW", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Open Workspace Symbols")
 
 		-- Jump to the type of the word under your cursor.
 		--  Useful when you're not sure what type a variable is and you want to see
 		--  the definition of its *type*, not where it was *defined*.
-		lsp_map("<leader>ld", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-
-		-- Fuzzy find all the symbols in your current document.
-		--  Symbols are things like variables, functions, types, etc.
-		lsp_map("<leader>lsd", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-
-		-- Fuzzy find all the symbols in your current workspace.
-		--  Similar to document symbols, except searches over your entire project.
-		lsp_map("<leader>lsw", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-
-		-- Rename the variable under your cursor.
-		--  Most Language Servers support renaming across files, etc.
-		lsp_map("<leader>lr", vim.lsp.buf.rename, "[R]e[n]ame")
-
-		-- Execute a code action, usually your cursor needs to be on top of an error
-		-- or a suggestion from your LSP for this to activate.
-		lsp_map("<leader>lc", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-
-		lsp_map("KK", function()
-			vim.lsp.buf.hover()
-		end, "[H]over displays information")
-
-		-- WARN: This is not Goto Definition, this is Goto Declaration.
-		--  For example, in C this would take you to the header.
-		lsp_map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+		lsp_map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
 
 		-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 		---@param client vim.lsp.Client
@@ -202,7 +186,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		--
 		-- This may be unwanted, since they displace some of your code
 		if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-			lsp_map("<leader>lt", function()
+			lsp_map("<leader>th", function()
 				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 			end, "[T]oggle Inlay [H]ints")
 		end
@@ -210,15 +194,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Trouble
-map("n", "<leader>tx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics" })
-map("n", "<leader>tX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics" })
-map("n", "<leader>ts", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Symbols" })
-map(
-	"n",
-	"<leader>tl",
-	"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-	{ desc = "LSP Definitions / references / ... " }
-)
+map("n", "<leader>tx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "[T]oggle Diagnostics" })
+map("n", "<leader>tX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "[T]oggle Buffer Diagnostics" })
+map("n", "<leader>ts", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "[T]oggle Symbols" })
+map("n", "<leader>tl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", { desc = "[T]oggle LSP" })
 map("n", "<leader>tL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List" })
 map("n", "<leader>tQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List" })
 

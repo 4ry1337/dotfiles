@@ -35,11 +35,11 @@ return {
 			-- [[ Configure Telescope ]]
 			-- See `:help telescope` and `:help telescope.setup()`
 			require("telescope").setup({
-				defaults = {
-					mappings = {
-						i = { ["<c-enter>"] = "to_fuzzy_refine" },
-					},
-				},
+				-- defaults = {
+				-- 	mappings = {
+				-- 		i = { ["<c-enter>"] = "to_fuzzy_refine" },
+				-- 	},
+				-- },
 				-- pickers = {}
 				extensions = {
 					["ui-select"] = {
@@ -49,8 +49,8 @@ return {
 			})
 
 			-- Enable Telescope extensions if they are installed
-			pcall(require("telescope").load_extension, "fzf")
-			pcall(require("telescope").load_extension, "ui-select")
+			-- pcall(require("telescope").load_extension, "fzf")
+			-- pcall(require("telescope").load_extension, "ui-select")
 		end,
 	},
 }
