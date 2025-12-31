@@ -18,7 +18,7 @@ return {
 	{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	{ "mbbill/undotree" },
 	{ "folke/zen-mode.nvim", opts = require("configs.zenmode") },
-	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
+	-- { "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 	-- {
 	-- 	"MeanderingProgrammer/render-markdown.nvim",
 	-- 	event = "VeryLazy",

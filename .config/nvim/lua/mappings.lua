@@ -99,14 +99,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 		end
 
-		-- Rename the variable under your cursor.
-		--  Most Language Servers support renaming across files, etc.
-		lsp_map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
-
-		-- Execute a code action, usually your cursor needs to be on top of an error
-		-- or a suggestion from your LSP for this to activate.
-		lsp_map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
-
 		-- Find references for the word under your cursor.
 		lsp_map("grr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 
@@ -135,6 +127,26 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		--  Useful when you're not sure what type a variable is and you want to see
 		--  the definition of its *type*, not where it was *defined*.
 		lsp_map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
+
+		-- Rename the variable under your cursor.
+		--  Most Language Servers support renaming across files, etc.
+		lsp_map("<leader>lr", vim.lsp.buf.rename, "[R]ename")
+
+		-- Execute a code action, usually your cursor needs to be on top of an error
+		-- or a suggestion from your LSP for this to activate.
+		lsp_map("<leader>lc", vim.lsp.buf.code_action, "[C]ode Action", { "n", "x" })
+
+		lsp_map("<leader>tl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", "[T]oggle")
+
+		-- The following code creates a keymap to toggle inlay hints in your
+		-- code, if the language server you are using supports them
+		--
+		-- This may be unwanted, since they displace some of your code
+		if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+			lsp_map("<leader>th", function()
+				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+			end, "[T]oggle Inlay [H]ints")
+		end
 
 		-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 		---@param client vim.lsp.Client
@@ -180,28 +192,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				end,
 			})
 		end
-
-		-- The following code creates a keymap to toggle inlay hints in your
-		-- code, if the language server you are using supports them
-		--
-		-- This may be unwanted, since they displace some of your code
-		if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-			lsp_map("<leader>th", function()
-				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-			end, "[T]oggle Inlay [H]ints")
-		end
 	end,
 })
 
 -- Trouble
+
 map("n", "<leader>tx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "[T]oggle Diagnostics" })
 map("n", "<leader>tX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "[T]oggle Buffer Diagnostics" })
-map("n", "<leader>ts", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "[T]oggle Symbols" })
-map("n", "<leader>tl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", { desc = "[T]oggle LSP" })
-map("n", "<leader>tL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List" })
-map("n", "<leader>tQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List" })
 
-map("n", "TT", function()
+map("n", "<leader>tL", "<cmd>Trouble loclist toggle<cr>", { desc = "[T]oggle Location List" })
+map("n", "<leader>tQ", "<cmd>Trouble qflist toggle<cr>", { desc = "[T]oggle Quickfix List" })
+
+map("n", "<leader>tt", function()
 	vim.diagnostic.open_float({})
 end, { desc = "Error in floating window" })
 
