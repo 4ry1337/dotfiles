@@ -1,7 +1,14 @@
-local keys = require("lazy.core.handler.keys")
 return {
 	-- deprecated
 	-- { "ellisonleao/glow.nvim", config = true, cmd = "Glow" }, @type LazySpec
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		event = "VeryLazy",
