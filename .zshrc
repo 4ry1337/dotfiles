@@ -7,6 +7,9 @@ export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
 # bun completions
 [ -s "/home/rakhat/.bun/_bun" ] && source "/home/rakhat/.bun/_bun"
 
+# nvm
+source /usr/share/nvm/init-nvm.sh
+
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
