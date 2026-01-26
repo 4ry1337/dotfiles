@@ -5,8 +5,8 @@ return {
 		dependencies = {
 			"windwp/nvim-ts-autotag",
 		},
-		main = "nvim-treesitter.configs",
 		opts = require("configs.treesitter"),
+		main = "nvim-treesitter",
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
