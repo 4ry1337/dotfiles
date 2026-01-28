@@ -28,7 +28,7 @@ style = "Italic"
 
 [font.normal]
 family = "IosevkaTerm"
-style = "Regular"
+style = "Semibold"
 
 [font.offset]
 x = 0
