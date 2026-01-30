@@ -109,6 +109,7 @@ vim.env.PATH = table.concat({ vim.fn.stdpath("data"), "mason", "bin" }, sep) .. 
 
 -- Disable line wrapping for markdown files
 vim.api.nvim_create_autocmd("FileType", {
+	desc = "Disable line wrapping for markdown files",
 	pattern = "markdown",
 	group = vim.api.nvim_create_augroup("markdown-nowrap", { clear = true }),
 	callback = function()
