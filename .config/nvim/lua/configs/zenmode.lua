@@ -1,7 +1,10 @@
 ---@module 'zen-mode'
 ---@type ZenOptions
 return {
-	plugins = {
-		alacritty = { enabled = true, font = 18 },
+	window = {
+		width = 160,
 	},
+	-- plugins = {
+	-- 	alacritty = { enabled = true, font = 18 },
+	-- },
 }
