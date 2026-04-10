@@ -6,15 +6,12 @@ return {
 		html = { "prettierd", "prettier" },
 		rust = { "rustfmt" },
 		sql = { "sql_formatter" },
-		c = { "clang-format" },
-		cpp = { "clang-format" },
+		-- c = { "clang-format" },
+		-- cpp = { "clang-format" },
 		toml = { "taplo" },
 	},
 	format_on_save = {
-		-- These options will be passed to conform.format()
 		timeout_ms = 500,
-		lsp_format = "fallback",
-		lsp_fallback = true,
 	},
 	formatters = {
 		rustfmt = {

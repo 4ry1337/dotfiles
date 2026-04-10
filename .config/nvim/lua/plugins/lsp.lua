@@ -47,10 +47,10 @@ return {
 				},
 			})
 
-			for server_name, server in pairs(servers) do
+			--[[ for server_name, server in pairs(servers) do
 				server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 				vim.lsp.config(server_name, server)
-			end
+			end ]]
 		end,
 	},
 }

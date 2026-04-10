@@ -7,6 +7,9 @@ return {
 			"--background-index",
 			"--clang-tidy",
 		},
+		capabilities = {
+			offsetEncoding = "utf-8",
+		},
 		settings = {
 			fallbackFlags = { "-std=c++20" },
 		},
