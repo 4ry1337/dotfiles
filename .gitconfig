@@ -20,3 +20,5 @@
 	required = true
 [core]
 	pager = cat
+[submodule]
+	recurse = true
