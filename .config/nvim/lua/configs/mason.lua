@@ -9,7 +9,7 @@ return {
 			-- Rust
 			"rust-analyzer",
 			-- Markdown
-			"marksman",
+			"markdown-oxide",
 			-- Docker
 			"dockerfile-language-server",
 			"docker-compose-language-service",

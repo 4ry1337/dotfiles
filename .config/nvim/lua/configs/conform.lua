@@ -9,6 +9,7 @@ return {
 		c = { "clang-format" },
 		cpp = { "clang-format" },
 		toml = { "taplo" },
+		json = { "prettierd", "prettier" },
 		javascript = { "prettierd", "prettier" },
 		javascriptreact = { "prettierd", "prettier" },
 		typescript = { "prettierd", "prettier" },
