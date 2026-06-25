@@ -28,5 +28,8 @@ return {
 		clang_format = {
 			prepend_args = { "--style=LLVM" },
 		},
+		nixfmt = {
+			args = { "-" },
+		},
 	},
 }
