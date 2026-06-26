@@ -60,6 +60,24 @@ On Arch: standard Lazy + Mason, no Nix needed. On NixOS: reads plugins from Nix 
 conditionals in Lua. Not actively developed.
 Reference: https://github.com/b-src/lazy-nix-helper.nvim
 
+## References
+
+| Resource | What it covers |
+|---|---|
+| https://github.com/b-src/lazy-nix-helper.nvim | lazy-nix-helper plugin — Mason conditional on NixOS |
+| https://geanmar.com/posts/how-to-setup-nvim-on-nixos/ | extraPackages + env vars approach to keep Mason working |
+| https://blog.hyperboly.net/posts/guides/my-neovim-workflow-2026/ | nixCats-based NixOS workflow, works on non-NixOS with tweaks |
+| https://github.com/nix-community/nixvim | nixvim — full Neovim config in Nix |
+| https://github.com/NotAShelf/nvf | nvf — modular Neovim framework for Nix |
+| https://github.com/BirdeeHub/nixCats-nvim | nixCats — keep Lua config, Nix manages deps (maintenance mode) |
+| https://github.com/nix-community/kickstart-nix.nvim | kickstart-nix — dead simple Nix flake template for Neovim |
+| https://ayats.org/blog/neovim-wrapper | Neovim wrapper with Nix from scratch |
+| https://nixcats.org/nix_LSPS.html | nixCats LSP/formatter setup guide |
+| https://discourse.nixos.org/t/configuring-neovim-how-to-run-non-nix-executables/49631 | NixOS Discourse: running non-Nix executables in Neovim |
+| https://discourse.nixos.org/t/poll-about-potential-neovim-wrapper-changes/76804 | NixOS Discourse: upcoming wrapper changes poll |
+| https://github.com/NixOS/nixpkgs/issues/498672 | nixpkgs 2026 neovim roadmap |
+| https://github.com/dundalek/lazy-lsp.nvim | lazy-lsp.nvim — wraps LSP in nix shell (requires Nix) |
+
 ## Next Steps
 
 ### Short term (unblock current issues)
