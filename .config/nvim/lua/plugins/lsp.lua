@@ -19,6 +19,14 @@ return {
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			{ "j-hui/fidget.nvim", opts = {} },
 			"saghen/blink.cmp",
+			{
+				"SmiteshP/nvim-navbuddy",
+				dependencies = {
+					"SmiteshP/nvim-navic",
+					"MunifTanjim/nui.nvim",
+				},
+				opts = { lsp = { auto_attach = true } },
+			},
 		},
 		config = function()
 			-- LSP servers and clients are able to communicate to each other what features they support.
