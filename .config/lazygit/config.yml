@@ -1,1 +1,9 @@
+gui:
+  authorColors: {
+    'Rakhat Yskak': 'orange'
+  }
+git:
+  commit:
+    signOff: true
+  disableForcePushing: true
 quitOnTopLevelReturn: true
