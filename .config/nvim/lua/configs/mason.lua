@@ -10,20 +10,14 @@ return {
 			"rust-analyzer",
 			-- Markdown
 			"markdown-oxide",
-			-- Docker
-			"dockerfile-language-server",
-			"docker-compose-language-service",
 			-- JS/TS
 			"vtsls",
-			-- css/tailwind
-			"cssls",
-			"tailwindcss",
-			-- SQL
-			"sqlls",
-			"sql-formatter",
 			-- formatters
 			"prettierd",
 			"clang-format",
+			"taplo",
+			-- misc
+			"typos-lsp",
 			-- "codelldb",
 		},
 		run_on_start = true,
