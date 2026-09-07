@@ -9,7 +9,7 @@ TERM = "xterm-256color"
 decorations = "Full"
 dynamic_title = true
 option_as_alt = "Both"
-opacity = 1
+opacity = 0.8
 blur = true
 
 [window.dimensions]
