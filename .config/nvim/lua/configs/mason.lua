@@ -8,6 +8,8 @@ return {
 			"clangd",
 			-- Rust
 			"rust-analyzer",
+			-- GO
+			"gopls",
 			-- Markdown
 			"markdown-oxide",
 			-- JS/TS

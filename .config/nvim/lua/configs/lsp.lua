@@ -30,7 +30,7 @@ return {
 			gopls = {
 				completeUnimported = true,
 				usePlaceholders = true,
-				analysis = {
+				analyses = {
 					unusedparams = true,
 				},
 			},
