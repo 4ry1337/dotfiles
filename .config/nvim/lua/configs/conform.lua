@@ -5,6 +5,7 @@ return {
 		md = { "prettierd", "prettier" },
 		html = { "prettierd", "prettier" },
 		rust = { "rustfmt" },
+		go = { "gofmt" },
 		sql = { "sql_formatter" },
 		c = { "clang-format" },
 		cpp = { "clang-format" },
